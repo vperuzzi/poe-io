@@ -1,0 +1,75 @@
+.RichEditor-root {
+    background: #fff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+  
+  .RichEditor-editor {
+    cursor: text;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .RichEditor-editor .public-DraftEditorPlaceholder-root,
+  .RichEditor-editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+  }
+  
+  .RichEditor-editor .public-DraftEditor-content {
+    min-height: 100px;
+  }
+  
+  .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+    display: none;
+  }
+  
+  .RichEditor-editor .public-DraftStyleDefault-pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+    font-size: 16px;
+    padding: 20px;
+  }
+  
+  .RichEditor-controls {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin-bottom: 5px;
+    user-select: none;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #7858A6;
+  }
+  
+  .RichEditor-styleButton {
+    color: #999;
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 2px 0;
+    display: inline-block;
+  }
+  
+  .RichEditor-activeButton {
+    color: #7858A6
+  }
+
+  button {
+    padding: 10px;
+    align-content: left;
+    background: #7858A6;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row-reverse
+
+  }
