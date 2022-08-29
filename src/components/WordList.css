@@ -1,0 +1,8 @@
+.wordList-container {
+    overflow-y: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-height: 50rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: 'Roboto Mono', monospace;
+}

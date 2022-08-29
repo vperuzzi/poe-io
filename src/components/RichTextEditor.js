@@ -12,13 +12,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
 
 class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: this.initializeEditorState(), isEdit: true };
+    this.state = {
+      editorState: this.initializeEditorState(),
+      isEdit: true,
+      title: localStorage.getItem("title"),
+    };
 
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => this.setState({ editorState });
@@ -28,6 +34,7 @@ class RichTextEditor extends React.Component {
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.handlePublish = this._handlePublish.bind(this);
     this.handleEdit = this._handleEdit.bind(this);
+    this.handleTitle = this._handleTitle.bind(this);
   }
 
   initializeEditorState() {
@@ -76,12 +83,19 @@ class RichTextEditor extends React.Component {
     this.setState({ ...this.state, isEdit: false });
     let contentRaw = convertToRaw(this.state.editorState.getCurrentContent());
     localStorage.setItem("editorState", JSON.stringify(contentRaw));
+    localStorage.setItem("title", this.state.title);
   }
 
   _handleEdit() {
     this.setState({ ...this.state, isEdit: true });
     this.focus();
   }
+
+  _handleTitle(event) {
+    event.preventDefault();
+    this.setState({ ...this.state, title: event.target.value });
+  }
+
 
   render() {
     const { editorState } = this.state;
@@ -98,7 +112,21 @@ class RichTextEditor extends React.Component {
 
     return (
       <div>
+        {this.state.isEdit && (
+          <TextField
+            sx={{
+              marginBottom: "20px",
+            }}
+            id="filled-basic"
+            label="Title"
+            variant="filled"
+            fullWidth
+            onChange={this.handleTitle}
+            value={this.state.title}
+          />
+        )}
         <div className="RichEditor-root">
+          {!this.state.isEdit && <p className="title">{this.state.title}</p>}
           {this.state.isEdit && (
             <InlineStyleControls
               editorState={editorState}
@@ -112,7 +140,7 @@ class RichTextEditor extends React.Component {
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.mapKeyToEditorCommand}
               onChange={this.onChange}
-              placeholder="Tell a story..."
+              placeholder="Once upon a midnight dreary, while I pondered, weak and weary..."
               ref="editor"
               spellCheck={true}
               textAlignment="center"
@@ -124,7 +152,7 @@ class RichTextEditor extends React.Component {
           {this.state.isEdit && (
             <Button
               sx={{
-                marginTop: "10px",
+                marginTop: "5px",
               }}
               variant="contained"
               endIcon={<AutoAwesomeIcon />}
@@ -137,7 +165,7 @@ class RichTextEditor extends React.Component {
           {!this.state.isEdit && (
             <Button
               sx={{
-                margin: "10px 0px",
+                margin: "5px 0px",
               }}
               variant="contained"
               endIcon={<CameraAltIcon />}
@@ -149,7 +177,7 @@ class RichTextEditor extends React.Component {
           {!this.state.isEdit && (
             <Button
               sx={{
-                margin: "10px 5px",
+                margin: "5px 5px",
               }}
               variant="contained"
               endIcon={<EditIcon />}
@@ -222,11 +250,17 @@ const InlineStyleControls = (props) => {
   );
 };
 
-const withThemeHook = (Component) => {
+const withHooks = (Component) => {
   return function WrappedComponent(props) {
     const theme = useTheme();
-    return <Component {...props} theme={theme} />;
+
+    return (
+      <Component
+        {...props}
+        theme={theme}
+      />
+    );
   };
 };
 
-export default withThemeHook(RichTextEditor);
+export default withHooks(RichTextEditor);

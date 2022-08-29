@@ -1,7 +1,9 @@
 import "./App.css";
 import RichTextEditor from "./components/RichTextEditor";
+import Form from "./components/Form";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import React from 'react';
 
 function App() {
   const theme = createTheme({
@@ -16,7 +18,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         <div className="App">
-          <RichTextEditor theme={theme} />
+          <div className="editorApp">
+            <RichTextEditor />
+          </div>
+          <Form />
         </div>
       </CssBaseline>
     </ThemeProvider>
