@@ -24,8 +24,9 @@ const Form = (props) => {
   };
 
   const handleQuery = () => {
+    setResults([]);
     let url = "";
-    console.log(related, rhyme);
+    
     if (rhyme.length > 0 && related.length > 0) {
       url = `https://api.datamuse.com/words?ml=${related}&rel_rhy=${rhyme}`;
     } else if (rhyme.length > 0) {

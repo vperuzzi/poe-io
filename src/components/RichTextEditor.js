@@ -13,7 +13,7 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
+import { useScreenshot, createFileName } from "use-react-screenshot";
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
 
@@ -35,6 +35,9 @@ class RichTextEditor extends React.Component {
     this.handlePublish = this._handlePublish.bind(this);
     this.handleEdit = this._handleEdit.bind(this);
     this.handleTitle = this._handleTitle.bind(this);
+    this.handleScreenshot = this._handleScreenshot.bind(this);
+
+    this.ref = React.createRef(null);
   }
 
   initializeEditorState() {
@@ -96,6 +99,15 @@ class RichTextEditor extends React.Component {
     this.setState({ ...this.state, title: event.target.value });
   }
 
+  _handleScreenshot() {
+    console.log('got here');
+    this.props.takeScreenShot(this.ref.current).then((image, { name = this.state.title, extension = "jpg" } = {}) => {
+      const a = document.createElement("a");
+      a.href = image;
+      a.download = createFileName(extension, name);
+      a.click();
+    });
+  }
 
   render() {
     const { editorState } = this.state;
@@ -126,14 +138,14 @@ class RichTextEditor extends React.Component {
           />
         )}
         <div className="RichEditor-root">
-          {!this.state.isEdit && <p className="title">{this.state.title}</p>}
           {this.state.isEdit && (
             <InlineStyleControls
               editorState={editorState}
               onToggle={this.toggleInlineStyle}
             />
           )}
-          <div className={className} onClick={this.focus}>
+          <div className={className} onClick={this.focus} ref={this.ref}>
+            {!this.state.isEdit && <p className="title">{this.state.title}</p>}
             <Editor
               customStyleMap={styleMap}
               editorState={editorState}
@@ -170,6 +182,7 @@ class RichTextEditor extends React.Component {
               variant="contained"
               endIcon={<CameraAltIcon />}
               color={this.props.theme.primary}
+              onClick={this.handleScreenshot}
             >
               Screenshot
             </Button>
@@ -253,11 +266,17 @@ const InlineStyleControls = (props) => {
 const withHooks = (Component) => {
   return function WrappedComponent(props) {
     const theme = useTheme();
+    const [image, takeScreenShot] = useScreenshot({
+      type: "image/jpeg",
+      quality: 1.0
+    });
 
     return (
       <Component
         {...props}
         theme={theme}
+        image={image}
+        takeScreenShot={takeScreenShot}
       />
     );
   };
