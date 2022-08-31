@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/poe-io/static/js/runtime~main.acc5c87e.js"
   },
   {
-    "revision": "08a03fadcfd9597b681f45e383963667",
+    "revision": "5fcb4ec88414cdf1031b8cf6b2081c3d",
     "url": "/poe-io/index.html"
   }
 ];
