@@ -5,7 +5,22 @@
 
 .editorApp {
   float: left;
-  width: 40%;
-  margin-left: 20rem;
+  width: 45%;
+  margin-left: 10%;
+}
+
+@media (max-width: 1500px) {
+  .editorApp{
+   margin: 2rem auto;
+   width: 90%;
+   align-items: center;
+   float: none;
+  }
+
+  .App {
+    margin: 2rem auto;
+    width: 100%;
+    text-align: center;
+  }
 }
 

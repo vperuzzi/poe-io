@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import "./Form.css";
 import WordList from "./WordList";
 
@@ -51,23 +51,30 @@ const Form = (props) => {
 
   return (
     <div className="form">
-      <TextField
-        id="outlined-basic"
-        label="Rhymes with..."
-        variant="outlined"
-        color={theme.primary}
-        onChange={handleRhyme}
-      />
-      <TextField
-        sx={{
-          marginLeft: "20px",
-        }}
-        id="outlined-basic"
-        label="Related to..."
-        variant="outlined"
-        color={theme.primary}
-        onChange={handleRelated}
-      />
+      <div className="textField-container">
+        <TextField
+          id="outlined-basic"
+          label="Rhymes with..."
+          variant="outlined"
+          color={theme.primary}
+          onChange={handleRhyme}
+        />
+        <TextField
+          sx={{
+            marginLeft: "20px",
+            '@media screen and (max-width: 550px)': {
+              marginLeft: "0px",
+              marginTop: "10px"
+            }
+          }}
+          id="outlined-basic"
+          label="Related to..."
+          variant="outlined"
+          color={theme.primary}
+          onChange={handleRelated}
+        />
+      </div>
+
       <div>
         <Button
           sx={{
