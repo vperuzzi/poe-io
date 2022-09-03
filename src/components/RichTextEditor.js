@@ -156,7 +156,7 @@ class RichTextEditor extends React.Component {
               onToggle={this.toggleInlineStyle}
             />
           )}
-          <div className={className} onClick={this.focus} ref={this.ref}>
+          <Box className={className} onClick={this.focus} ref={this.ref} sx={{backgroundColor: 'background.default'}}>
             {!this.state.isEdit && <p className="title">{this.state.title}</p>}
             <Editor
               customStyleMap={styleMap}
@@ -170,7 +170,7 @@ class RichTextEditor extends React.Component {
               textAlignment="center"
               readOnly={!this.state.isEdit}
             />
-          </div>
+          </Box>
         </Box>
         <div className="button-container">
           {this.state.isEdit && (
