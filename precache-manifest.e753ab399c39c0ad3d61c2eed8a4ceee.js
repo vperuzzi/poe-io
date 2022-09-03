@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "0a6819ec903d6f4f1887",
+    "revision": "8a6c3b18d1262c9f8b9b",
     "url": "/poe-io/static/css/main.c37cb3e8.chunk.css"
   },
   {
-    "revision": "0a6819ec903d6f4f1887",
-    "url": "/poe-io/static/js/main.0a6819ec.chunk.js"
+    "revision": "8a6c3b18d1262c9f8b9b",
+    "url": "/poe-io/static/js/main.8a6c3b18.chunk.js"
   },
   {
     "revision": "2dc8e6cf5ce42dc8eb84",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/poe-io/static/js/runtime~main.783793cb.js"
   },
   {
-    "revision": "48abb94dcec60c22549bbca1fcc4e7d1",
+    "revision": "4cc982871f293184917d3cc7b8240a61",
     "url": "/poe-io/index.html"
   }
 ];

@@ -1,7 +1,7 @@
 {
   "main.css": "/poe-io/static/css/main.c37cb3e8.chunk.css",
-  "main.js": "/poe-io/static/js/main.0a6819ec.chunk.js",
-  "main.js.map": "/poe-io/static/js/main.0a6819ec.chunk.js.map",
+  "main.js": "/poe-io/static/js/main.8a6c3b18.chunk.js",
+  "main.js.map": "/poe-io/static/js/main.8a6c3b18.chunk.js.map",
   "static/js/1.2dc8e6cf.chunk.js": "/poe-io/static/js/1.2dc8e6cf.chunk.js",
   "static/js/1.2dc8e6cf.chunk.js.map": "/poe-io/static/js/1.2dc8e6cf.chunk.js.map",
   "static/css/2.e3e0fd0b.chunk.css": "/poe-io/static/css/2.e3e0fd0b.chunk.css",
@@ -12,6 +12,6 @@
   "static/css/main.c37cb3e8.chunk.css.map": "/poe-io/static/css/main.c37cb3e8.chunk.css.map",
   "static/css/2.e3e0fd0b.chunk.css.map": "/poe-io/static/css/2.e3e0fd0b.chunk.css.map",
   "index.html": "/poe-io/index.html",
-  "precache-manifest.47e85169e19708fe75f587046dd787b5.js": "/poe-io/precache-manifest.47e85169e19708fe75f587046dd787b5.js",
+  "precache-manifest.e753ab399c39c0ad3d61c2eed8a4ceee.js": "/poe-io/precache-manifest.e753ab399c39c0ad3d61c2eed8a4ceee.js",
   "service-worker.js": "/poe-io/service-worker.js"
 }
