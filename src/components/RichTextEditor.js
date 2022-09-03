@@ -16,6 +16,7 @@ import TextField from "@mui/material/TextField";
 import { useScreenshot, createFileName } from "use-react-screenshot";
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
+import { Box } from "@mui/material";
 
 class RichTextEditor extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class RichTextEditor extends React.Component {
     this.state = {
       editorState: this.initializeEditorState(),
       isEdit: true,
-      title: localStorage.getItem("title"),
+      title: this.initializeTitleState(),
     };
 
     this.focus = () => this.refs.editor.focus();
@@ -52,6 +53,18 @@ class RichTextEditor extends React.Component {
 
     return editorState;
   }
+
+  initializeTitleState() {
+    let title = localStorage.getItem("title");
+    if (title) {
+      return title;
+    } else {
+      title = 'My Poem';
+    }
+
+    return title;
+  }
+
   _handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -100,7 +113,6 @@ class RichTextEditor extends React.Component {
   }
 
   _handleScreenshot() {
-    console.log('got here');
     this.props.takeScreenShot(this.ref.current).then((image, { name = this.state.title, extension = "jpg" } = {}) => {
       const a = document.createElement("a");
       a.href = image;
@@ -137,7 +149,7 @@ class RichTextEditor extends React.Component {
             value={this.state.title}
           />
         )}
-        <div className="RichEditor-root">
+        <Box className="RichEditor-root" sx={{backgroundColor: 'background.default'}}>
           {this.state.isEdit && (
             <InlineStyleControls
               editorState={editorState}
@@ -159,7 +171,7 @@ class RichTextEditor extends React.Component {
               readOnly={!this.state.isEdit}
             />
           </div>
-        </div>
+        </Box>
         <div className="button-container">
           {this.state.isEdit && (
             <Button
