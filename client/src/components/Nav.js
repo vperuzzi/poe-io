@@ -27,7 +27,7 @@ const Nav = (props) => {
         alignItems: 'center',
       }}
     >
-      poe.io
+      poe.io ✒️
       <IconButton sx={{ float: "right", mt: '0.7rem', mr: '10px'}} onClick={ctx.toggleColorMode} color="inherit">
         {theme.palette.mode === "dark" ? <LightModeIcon size="large"/> : <DarkModeIcon />}
       </IconButton>
